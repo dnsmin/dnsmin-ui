@@ -1,3 +1,4 @@
 {
-  "apiBaseUrl": "http://localhost/api"
+  "apiBaseUrl": "http://localhost/api",
+  "wsBaseUrl": "ws://localhost/api/v1/ws"
 }

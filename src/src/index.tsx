@@ -3,7 +3,6 @@ import {createRoot} from 'react-dom/client';
 import {ErrorBoundary} from 'react-error-boundary'
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import ReactGA from 'react-ga4';
 import {authService} from "@app/services/auth";
 import {loadConfig} from "@app/config";
@@ -23,17 +22,14 @@ if (VITE_NODE_ENV === 'production' && VITE_GA_ID) {
 (async () => {
     await loadConfig();
     await authService.init();
-    const queryClient = new QueryClient();
     createRoot(document.getElementById('root') as HTMLDivElement).render(
         <React.StrictMode>
             <ErrorBoundary FallbackComponent={ErrorPage}>
-                <QueryClientProvider client={queryClient}>
                     <Provider store={store}>
                         <BrowserRouter>
                             <App/>
                         </BrowserRouter>
                     </Provider>
-                </QueryClientProvider>
             </ErrorBoundary>
         </React.StrictMode>
     );

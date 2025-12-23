@@ -1,5 +1,6 @@
 export interface AppConfig {
     apiBaseUrl: string;
+    wsBaseUrl: string;
 }
 
 let config: AppConfig | null = null;
